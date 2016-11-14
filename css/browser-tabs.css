@@ -26,6 +26,11 @@
   background: linear-gradient(to bottom, #e5e5e5 90%, #ddd);
   color: #555;
 }
+
+#browser-tabs > div.expand {
+  flex-grow: 3
+}
+
 #browser-tabs > div > span {
   flex: 1;
   padding: 6px 0 4px 12px;

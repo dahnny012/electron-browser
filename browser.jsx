@@ -22,7 +22,8 @@ var BrowserChrome = React.createClass({
   getInitialState: function () {
     return {
       pages: [createPageObject()],
-      currentPageIndex: 0
+      currentPageIndex: 0,
+      hoverIndex: 0
     }
   },
   componentWillMount: function () {
@@ -147,6 +148,9 @@ var BrowserChrome = React.createClass({
     onNewTab: function () {
       this.createTab()
     },
+    onTabHover: function(e, page, pageIndex){
+      this.setState({hoverIndex: pageIndex})
+    },
     onTabClick: function (e, page, pageIndex) {
       this.setState({ currentPageIndex: pageIndex })
     },
@@ -252,7 +256,7 @@ var BrowserChrome = React.createClass({
   render: function() {
     var self = this
     return <div>
-      <BrowserTabs ref="tabs" pages={this.state.pages} currentPageIndex={this.state.currentPageIndex} {...this.tabHandlers} />
+      <BrowserTabs ref="tabs" pages={this.state.pages} currentPageIndex={this.state.currentPageIndex} hoverIndex={this.state.hoverIndex}  {...this.tabHandlers} />
       <BrowserNavbar ref="navbar" {...this.navHandlers} page={this.state.pages[this.state.currentPageIndex]} />
       {this.state.pages.map(function (page, i) {
         if (!page)
